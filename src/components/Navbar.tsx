@@ -29,18 +29,16 @@ export const Navbar = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '70px' }}>
           {/* Logo & School Name */}
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-            <div style={{
-              width: '50px',
-              height: '50px',
-              borderRadius: '8px',
-              background: '#CC1F2D',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px solid #CC1F2D',
-            }}>
-              <span style={{ fontSize: '1.5rem' }}>🔧</span>
-            </div>
+            <img 
+              src="/assets/logo/Copilot_20260608_172155.png" 
+              alt="Phuthalichaba T.H.S Logo" 
+              style={{
+                width: '50px',
+                height: '50px',
+                borderRadius: '8px',
+                objectFit: 'contain',
+              }}
+            />
             <div>
               <div style={{ fontWeight: 900, fontSize: '1rem', color: '#1A1F3A', textTransform: 'uppercase' }}>
                 PHUTHALICHABA T.H.S

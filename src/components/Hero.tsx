@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const quotes = [
   "You've got this! Believe in yourself.",
@@ -16,17 +17,10 @@ export const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const scrollTo = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section id="hero" style={{
       minHeight: '85vh',
-      background: 'linear-gradient(135deg, #CC1F2D 0%, #991520 50%, #1A1F3A 100%)',
+      background: 'linear-gradient(135deg, rgba(204,31,45,0.85) 0%, rgba(153,21,32,0.85) 50%, rgba(26,31,58,0.85) 100%), url(/assets/hero/FB_IMG_1780402740490.jpg) center/cover no-repeat',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -34,28 +28,13 @@ export const Hero = () => {
       overflow: 'hidden',
       padding: '60px 20px',
     }}>
-      {/* Mountain silhouette */}
+      {/* Mountain silhouette overlay */}
       <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '150px' }} preserveAspectRatio="none">
         <path d="M0,150 L100,80 L200,110 L300,60 L400,100 L500,50 L600,90 L700,40 L800,80 L900,60 L1000,100 L1100,50 L1200,90 L1200,150 Z" fill="rgba(26,31,58,0.4)" />
         <path d="M0,150 L150,100 L300,130 L450,70 L600,120 L750,60 L900,110 L1050,80 L1200,120 L1200,150 Z" fill="rgba(153,21,32,0.3)" />
       </svg>
 
       <div style={{ textAlign: 'center', position: 'relative', zIndex: 2, maxWidth: '800px' }}>
-        {/* School crest placeholder */}
-        <div style={{
-          width: '120px',
-          height: '120px',
-          margin: '0 auto 24px',
-          background: 'rgba(255,255,255,0.1)',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '4px solid rgba(255,255,255,0.3)',
-        }}>
-          <span style={{ fontSize: '3rem' }}>🔧</span>
-        </div>
-
         <h1 style={{
           fontSize: 'clamp(2.5rem, 6vw, 4rem)',
           fontWeight: 900,
@@ -63,41 +42,45 @@ export const Hero = () => {
           marginBottom: '16px',
           textTransform: 'uppercase',
           letterSpacing: '0.05em',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
         }}>
           Grow in Excellence
         </h1>
 
         <p style={{
           fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-          color: 'rgba(255,255,255,0.9)',
+          color: 'rgba(255,255,255,0.95)',
           marginBottom: '20px',
           lineHeight: 1.6,
-          fontWeight: 300,
+          fontWeight: 400,
+          textShadow: '1px 1px 2px rgba(0,0,0,0.3)',
         }}>
           Building Future Leaders Through Excellence & Discipline
         </p>
 
         {/* Rotating motivational quote */}
         <div style={{
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.15)',
           borderRadius: '12px',
           padding: '16px 24px',
           marginBottom: '32px',
           backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.2)',
         }}>
           <p style={{
             fontSize: '1.1rem',
             color: '#FFFFFF',
             fontStyle: 'italic',
             transition: 'opacity 0.5s',
+            textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
           }}>
             "{quotes[currentQuote]}"
           </p>
         </div>
 
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button
-            onClick={() => scrollTo('#about')}
+          <Link
+            to="/about"
             style={{
               padding: '14px 32px',
               background: '#FFFFFF',
@@ -110,6 +93,7 @@ export const Hero = () => {
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               transition: 'all 0.3s',
+              textDecoration: 'none',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-3px)';
@@ -121,9 +105,9 @@ export const Hero = () => {
             }}
           >
             Explore Our School
-          </button>
-          <button
-            onClick={() => scrollTo('#admissions')}
+          </Link>
+          <Link
+            to="/admissions"
             style={{
               padding: '14px 32px',
               background: 'transparent',
@@ -136,6 +120,7 @@ export const Hero = () => {
               textTransform: 'uppercase',
               letterSpacing: '0.05em',
               transition: 'all 0.3s',
+              textDecoration: 'none',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(255,255,255,0.15)';
@@ -145,7 +130,7 @@ export const Hero = () => {
             }}
           >
             Apply Now
-          </button>
+          </Link>
         </div>
       </div>
     </section>
