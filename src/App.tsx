@@ -22,21 +22,21 @@ export default function App() {
         <Navbar />
         <main style={{ flex: 1 }}>
           <Routes>
+            {/* Home page - Hero + News + Footer */}
             <Route path="/" element={
               <>
                 <Hero />
-                <About />
-                <Crest />
-                <Academics />
-                <TechnicalStreams />
-                <ExamPrep />
-                <Facilities />
-                <Admissions />
-                <Gallery />
                 <News />
-                <Contact />
               </>
             } />
+            {/* Individual section pages */}
+            <Route path="/about" element={<><Hero /><About /><Crest /></>} />
+            <Route path="/academics" element={<><Hero /><Academics /><TechnicalStreams /><ExamPrep /></>} />
+            <Route path="/facilities" element={<><Hero /><Facilities /></>} />
+            <Route path="/admissions" element={<><Hero /><Admissions /></>} />
+            <Route path="/gallery" element={<><Hero /><Gallery /></>} />
+            <Route path="/news" element={<><Hero /><News /></>} />
+            <Route path="/contact" element={<><Hero /><Contact /></>} />
           </Routes>
         </main>
         <Footer />
