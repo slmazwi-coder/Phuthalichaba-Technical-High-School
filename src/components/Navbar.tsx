@@ -1,28 +1,20 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Academics', href: '#academics' },
-  { name: 'Technical Streams', href: '#technical' },
-  { name: 'Facilities', href: '#facilities' },
-  { name: 'Admissions', href: '#admissions' },
-  { name: 'Gallery', href: '#gallery' },
-  { name: 'News', href: '#news' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', to: '/' },
+  { name: 'About', to: '/about' },
+  { name: 'Academics', to: '/academics' },
+  { name: 'Facilities', to: '/facilities' },
+  { name: 'Admissions', to: '/admissions' },
+  { name: 'Gallery', to: '/gallery' },
+  { name: 'News', to: '/news' },
+  { name: 'Contact', to: '/contact' },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <nav style={{
@@ -36,7 +28,7 @@ export const Navbar = () => {
       <div className="container" style={{ padding: '0 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '70px' }}>
           {/* Logo & School Name */}
-          <a href="#hero" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
             <div style={{
               width: '50px',
               height: '50px',
@@ -57,15 +49,15 @@ export const Navbar = () => {
                 Grow in Excellence
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div style={{ display: 'flex', gap: '8px' }} className="desktop-nav">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                to={link.to}
+                onClick={() => setIsOpen(false)}
                 style={{
                   padding: '8px 14px',
                   fontSize: '0.85rem',
@@ -73,6 +65,7 @@ export const Navbar = () => {
                   color: '#1A1F3A',
                   borderRadius: '6px',
                   transition: 'all 0.2s',
+                  textDecoration: 'none',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#FAEAEA';
@@ -84,11 +77,11 @@ export const Navbar = () => {
                 }}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
               style={{
                 padding: '8px 16px',
                 fontSize: '0.85rem',
@@ -100,10 +93,11 @@ export const Navbar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
+                textDecoration: 'none',
               }}
             >
               🤖 Ask Phuthalichaba
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,10 +124,10 @@ export const Navbar = () => {
             padding: '16px 0',
           }}>
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                to={link.to}
+                onClick={() => setIsOpen(false)}
                 style={{
                   display: 'block',
                   padding: '12px 16px',
@@ -141,14 +135,15 @@ export const Navbar = () => {
                   fontWeight: 600,
                   color: '#1A1F3A',
                   borderBottom: '1px solid #FAEAEA',
+                  textDecoration: 'none',
                 }}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
-              onClick={(e) => { e.preventDefault(); handleNavClick('#contact'); }}
+            <Link
+              to="/contact"
+              onClick={() => setIsOpen(false)}
               style={{
                 display: 'block',
                 padding: '12px 16px',
@@ -156,10 +151,11 @@ export const Navbar = () => {
                 fontWeight: 700,
                 color: '#CC1F2D',
                 marginTop: '8px',
+                textDecoration: 'none',
               }}
             >
               🤖 Ask Phuthalichaba
-            </a>
+            </Link>
           </div>
         )}
       </div>
